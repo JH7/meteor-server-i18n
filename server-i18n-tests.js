@@ -3,7 +3,7 @@ import { ServerI18n } from 'meteor/jh7:server-i18n';
 import { assert } from 'chai';
 
 
-describe('private-i18n', () => {
+describe('server-i18n', () => {
   it('should throw errors if malicious use', () => {
     ServerI18n.init('{}');
     assert.throws(() => { ServerI18n.__('hello', 'de'); }, 'not initialized');
