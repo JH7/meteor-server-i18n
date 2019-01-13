@@ -1,7 +1,7 @@
 // Import and rename a variable exported by private-i18n.js.
 import { ServerI18n } from 'meteor/jh7:server-i18n';
-import { assert } from 'chai';
 
+import { assert } from 'chai';
 
 describe('server-i18n', () => {
   it('should throw errors if malicious use', () => {
