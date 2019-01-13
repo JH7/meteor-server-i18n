@@ -5,7 +5,8 @@
   "main": "server-i18n.js",
   "repository": "https://github.com/JH7/meteor-server-i18n",
   "scripts": {
-    "test": "cross-env TEST_CLIENT=0 meteor test-packages ./ --port 4002 --once --driver-package meteortesting:mocha"
+    "test": "cross-env TEST_CLIENT=0 meteor test-packages ./ --port 4002 --once --driver-package meteortesting:mocha",
+    "lint": "node ./node_modules/eslint/bin/eslint.js ."
   },
   "author": "Jonas M. Hillebrand",
   "license": "MIT",
