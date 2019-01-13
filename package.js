@@ -10,20 +10,23 @@ Package.describe({
   documentation: 'README.md',
 });
 
-Npm.depends({
-  'lodash.get': '4.4.2',
-});
-
 Package.onUse((api) => {
+  Npm.depends({
+    'lodash.get': '4.4.2',
+  });
   api.versionsFrom('1.0');
-  api.use('ecmascript');
+  api.use('ecmascript@0.12.4');
   api.mainModule('server-i18n.js', 'server');
 });
 
 Package.onTest((api) => {
-  api.use('ecmascript');
-  api.use('meteortesting:mocha');
-  api.use('practicalmeteor:chai');
-  api.use('jh7:server-i18n');
+  Npm.depends({
+    'lodash.get': '4.4.2',
+    chai: '4.2.0',
+  });
+  api.use('ecmascript@0.12.4');
+  api.use('meteortesting:mocha@1.1.1');
+  api.use('practicalmeteor:chai@2.1.0_1');
+  api.use('jh7:server-i18n@0.0.1');
   api.mainModule('server-i18n-tests.js', 'server');
 });
