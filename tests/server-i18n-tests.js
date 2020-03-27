@@ -45,6 +45,42 @@ describe('server-i18n', () => {
     assert.equal(ServerI18n.__('test.notfound', 'de', ['1', '2', '3', '4', '5']), 'test.notfound');
   });
 
+  it('should default correctly', () => {
+    const testI18n = {
+      de: {
+        hello: 'Hallo',
+        test: {
+          article: 'Du hast %s Artikel',
+          count: '%s %s %s %s, toll',
+        },
+      },
+      en: {
+        hello: 'Hello',
+        test: {
+          article: 'You have %s articles',
+          count: '%s %s %s %s, cool',
+        },
+      },
+    };
+
+    ServerI18n.init(JSON.stringify(testI18n));
+    ServerI18n.setDefaultLang('en');
+
+    assert.equal(ServerI18n.__('hello', 'sl'), 'Hello');
+    assert.equal(ServerI18n.__('hello', 'pl', 'test'), 'Hello');
+
+    assert.equal(ServerI18n.__('test.article', 'afk', 'eins'), 'You have eins articles');
+    assert.equal(ServerI18n.__('test.article', 'cn', ['two', 'test']), 'You have two articles');
+
+    assert.equal(ServerI18n.__('test.count', 'cn', ['1', '2', '3', '4', '5']), '1 2 3 4, cool');
+    assert.equal(ServerI18n.__('test.count', 'es', ['1', '2', '3', '4']), '1 2 3 4, cool');
+
+    assert.equal(ServerI18n.__('test.notfound', 'tw', ['1', '2', '3', '4', '5']), 'test.notfound');
+
+    ServerI18n.setDefaultLang(false);
+    assert.throws(() => { ServerI18n.__('hello', 'cn'); }, 'not initialized');
+  });
+
   it('translates via ssrTranslation', () => {
     const testI18n = {
       de: {
