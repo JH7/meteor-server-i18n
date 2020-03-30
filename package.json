@@ -1,6 +1,6 @@
 {
   "name": "meteor-server-i18n",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Private i18n for server side only.",
   "main": "server-i18n.js",
   "repository": "https://github.com/JH7/meteor-server-i18n",

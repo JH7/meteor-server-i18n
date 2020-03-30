@@ -6,6 +6,9 @@ import { assert } from 'chai';
 describe('server-i18n', () => {
   it('should throw errors if malicious use', () => {
     ServerI18n.init('{}');
+    const langs = ServerI18n.getLanguages();
+    assert.isArray(langs);
+    assert.lengthOf(langs, 0);
     assert.throws(() => { ServerI18n.__('hello', 'de'); }, 'not initialized');
     assert.throws(() => { ServerI18n.__('test.count', 'en', 'foo'); }, 'not initialized');
     assert.throws(() => { ServerI18n.ssrTranslation('de')('hello', 'test'); }, 'not initialized');
@@ -32,6 +35,12 @@ describe('server-i18n', () => {
     };
 
     ServerI18n.init(JSON.stringify(testI18n));
+
+    const langs = ServerI18n.getLanguages();
+    assert.isArray(langs);
+    assert.lengthOf(langs, 2);
+    assert.equal(langs[0], 'de');
+    assert.equal(langs[1], 'en');
 
     assert.equal(ServerI18n.__('hello', 'de'), 'Hallo');
     assert.equal(ServerI18n.__('hello', 'en', 'test'), 'Hello');

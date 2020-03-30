@@ -4,7 +4,7 @@ Npm.depends({
 
 Package.describe({
   name: 'jh7:server-i18n',
-  version: '0.0.2',
+  version: '0.0.3',
   // Brief, one-line summary of the package.
   summary: 'Private i18n for server side only.',
   // URL to the Git repository containing the source code for this package.

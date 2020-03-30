@@ -15,6 +15,12 @@ export const ServerI18n = {
     i18nJson = JSON.parse(i18nText);
   },
   /**
+   * Returns all initialized languages.
+   */
+  getLanguages() {
+    return Object.keys(i18nJson);
+  },
+  /**
    * Sets a default lang which will be used if the specified lang
    * was not initialized.
    * @param {string} lang The language to default to.

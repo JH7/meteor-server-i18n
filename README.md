@@ -48,6 +48,14 @@ using the helper in `yourTemplate`:
 ```handlebars
 {{_ 'items' 'Eve' 'Ticket'}} => Eve, your item: Ticket
 ```
+For the case that a language is not specified, you can specify a fallback language which will be used instead:
+```javascript
+ServerI18n.setDefaultLang('en');
+```
+To retrieve all initialized languages:
+```javascript
+ServerI18n.getLanguages();
+```
 ## Contributing
 Want to contribute? No problem. Just create a pull request :smile:
 ## License
